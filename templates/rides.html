@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Rides</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+
+<div class="container mt-5">
+
+    <h2>Available Rides</h2>
+
+    <table class="table table-bordered">
+
+        <thead>
+
+        <tr>
+            <th>ID</th>
+            <th>Pickup</th>
+            <th>Drop</th>
+            <th>Status</th>
+            <th>Driver Action</th>
+            <th>Customer Action</th>
+        </tr>
+
+        </thead>
+
+        <tbody>
+
+        {% for ride in rides %}
+
+        <tr>
+
+            <td>{{ ride.id }}</td>
+
+            <td>{{ ride.pickup_location }}</td>
+
+            <td>{{ ride.drop_location }}</td>
+
+            <td>{{ ride.status }}</td>
+            
+            <td>
+                
+                <a
+                    href="/offer/create/{{ ride.id }}/"
+                    class="btn btn-success btn-sm"
+                    >
+                    Make Offer
+                </a>
+            
+            </td>
+
+            <td>
+                
+                <a
+                    href="/offers/{{ ride.id }}/"
+                    class="btn btn-primary btn-sm"
+                    >
+                    View Offers
+                </a>
+
+            </td>
+
+        </tr>
+
+        {% endfor %}
+
+        </tbody>
+
+    </table>
+
+</div>
+
+</body>
+</html>

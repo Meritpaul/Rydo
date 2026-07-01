@@ -57,38 +57,6 @@ def home(request):
     return render(request, "home.html")
 
 
-def create_ride(request):
-
-    if request.method == "POST":
-
-        pickup = request.POST.get("pickup")
-        drop = request.POST.get("drop")
-        pickup_time = request.POST.get("pickup_time")
-
-        customer = User.objects.first()
-
-        RideRequest.objects.create(
-            customer=customer,
-            pickup_location=pickup,
-            drop_location=drop,
-            pickup_time=pickup_time
-        )
-
-        return redirect("/")
-
-    return render(request, "create_ride.html")
-
-
-def ride_list(request):
-
-    rides = RideRequest.objects.all().order_by("-id")
-
-    return render(
-        request,
-        "rides.html",
-        {"rides": rides}
-    )
-    
 def accept_offer(request, offer_id):
 
     offer = DriverOffer.objects.get(

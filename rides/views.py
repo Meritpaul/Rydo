@@ -1,12 +1,31 @@
-from rest_framework import generics
+from django.shortcuts import render, redirect
 from .models import RideRequest
-from .serializers import RideRequestSerializer
-# rides/views.py
-
-from rest_framework.permissions import IsAuthenticated
 
 
-class RideCreateView(generics.CreateAPIView):
-    queryset = RideRequest.objects.all()
-    serializer_class = RideRequestSerializer
-    permission_classes = [IsAuthenticated]
+def ride_list(request):
+
+    rides = RideRequest.objects.all().order_by("-id")
+
+    return render(
+        request,
+        "rides.html",
+        {
+            "rides": rides
+        }
+    )
+
+
+def create_ride(request):
+
+    if request.method == "POST":
+
+        RideRequest.objects.create(
+            customer=request.user,
+            pickup_location=request.POST.get("pickup"),
+            drop_location=request.POST.get("drop"),
+            pickup_time=request.POST.get("pickup_time"),
+        )
+
+        return redirect("/rides/")
+
+    return render(request, "create_ride.html")

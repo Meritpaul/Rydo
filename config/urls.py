@@ -24,12 +24,15 @@ from rest_framework_simplejwt.views import (
 
 from config.views import (
     home,
-    create_ride,
-    ride_list,
+    login_view,
     create_offer,
     view_offers,
     accept_offer,
-    login_view,
+)
+
+from rides.views import (
+    create_ride,
+    ride_list,
 )
 
 urlpatterns = [

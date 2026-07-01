@@ -36,3 +36,7 @@ Thumbs.db
 
 # Node (Tailwind build)
 node_modules/
+
+venv/
+__pycache__/
+*.sqlite3

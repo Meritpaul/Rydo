@@ -25,6 +25,8 @@ from rest_framework_simplejwt.views import (
 from config.views import (
     home,
     login_view,
+    dashboard,
+    driver_dashboard,
     create_offer,
     view_offers,
     accept_offer,
@@ -37,7 +39,9 @@ from rides.views import (
 
 urlpatterns = [
     path("", home),
-
+    
+    path("dashboard/", dashboard),
+    path("driver/dashboard/", driver_dashboard),
     path("admin/", admin.site.urls),
 
     path("api/token/", TokenObtainPairView.as_view()),
@@ -45,6 +49,8 @@ urlpatterns = [
 
     path("api/rides/", include("rides.urls")),
     path("api/accounts/", include("accounts.urls")),
+    path("vehicles/", include("vehicles.urls")),
+    path("bookings/", include("bookings.urls")),
     path("rides/", ride_list),
     path("ride/create/", create_ride),
     path("offer/create/<int:ride_id>/", create_offer),

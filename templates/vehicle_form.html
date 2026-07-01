@@ -1,0 +1,75 @@
+{% extends "base.html" %}
+
+{% block title %}
+Add Vehicle
+{% endblock %}
+
+{% block content %}
+
+<h2>Add Vehicle</h2>
+
+<form method="POST">
+
+    {% csrf_token %}
+
+    <div class="mb-3">
+        <label>Brand</label>
+        <input type="text"
+            name="brand"
+            class="form-control"
+            required>
+    </div>
+
+    <div class="mb-3">
+        <label>Model</label>
+        <input type="text"
+            name="model"
+            class="form-control"
+            required>
+    </div>
+
+    <div class="mb-3">
+        <label>Color</label>
+        <input type="text"
+            name="color"
+            class="form-control"
+            required>
+    </div>
+
+    <div class="mb-3">
+        <label>Registration Number</label>
+        <input type="text"
+            name="registration"
+            class="form-control"
+            required>
+    </div>
+
+    <div class="mb-3">
+        <label>Seats</label>
+        <input type="number"
+            name="seats"
+            class="form-control"
+            value="4">
+    </div>
+
+    <div class="form-check">
+
+        <input
+            class="form-check-input"
+            type="checkbox"
+            name="has_ac"
+            checked>
+
+        <label class="form-check-label">
+            Air Conditioned
+        </label>
+
+    </div>
+
+    <button class="btn btn-primary mt-4">
+        Save Vehicle
+    </button>
+
+</form>
+
+{% endblock %}

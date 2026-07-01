@@ -17,6 +17,9 @@ def ride_list(request):
 
 def create_ride(request):
 
+    if request.user.role != "customer":
+        return redirect("/driver/dashboard/")
+
     if request.method == "POST":
 
         RideRequest.objects.create(

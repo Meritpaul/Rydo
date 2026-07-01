@@ -1,0 +1,108 @@
+{% extends "base.html" %}
+
+{% block title %}
+Dashboard
+{% endblock %}
+
+{% block content %}
+
+<h2 class="mb-4">
+    Welcome, {{ request.user.username }}
+</h2>
+
+<div class="row">
+
+    <div class="col-md-4">
+
+        <div class="card shadow">
+
+            <div class="card-body">
+
+                <h5>Total Rides</h5>
+
+                <h1>{{ total_rides }}</h1>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="col-md-4">
+
+        <div class="card shadow">
+
+            <div class="card-body">
+
+                <h5>Pending</h5>
+
+                <h1>{{ pending }}</h1>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="col-md-4">
+
+        <div class="card shadow">
+
+            <div class="card-body">
+
+                <h5>Booked</h5>
+
+                <h1>{{ booked }}</h1>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<hr>
+
+<h3 class="mt-5">
+    My Recent Rides
+</h3>
+
+<table class="table table-striped">
+
+    <thead>
+
+    <tr>
+
+        <th>ID</th>
+        <th>Pickup</th>
+        <th>Drop</th>
+        <th>Status</th>
+
+    </tr>
+
+    </thead>
+
+    <tbody>
+
+    {% for ride in rides %}
+
+    <tr>
+
+        <td>{{ ride.id }}</td>
+
+        <td>{{ ride.pickup_location }}</td>
+
+        <td>{{ ride.drop_location }}</td>
+
+        <td>{{ ride.status }}</td>
+
+    </tr>
+
+    {% endfor %}
+
+    </tbody>
+
+</table>
+
+{% endblock %}

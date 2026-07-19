@@ -55,7 +55,11 @@ def view_offers(request, ride_id):
 
 
 def home(request):
-    return render(request, "home.html")
+
+    return render(
+        request,
+        "home.html"
+    )
 
 
 def accept_offer(request, offer_id):

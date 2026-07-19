@@ -1,0 +1,81 @@
+{% extends "base.html" %}
+
+{% block title %}
+My Trips
+{% endblock %}
+
+{% block content %}
+
+<h2 class="mb-4">
+My Trips
+</h2>
+
+<table class="table table-bordered">
+
+<thead>
+
+<tr>
+
+<th>ID</th>
+<th>Pickup</th>
+<th>Destination</th>
+<th>Customer</th>
+<th>Fare</th>
+<th>Status</th>
+<th>Details</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+
+{% for booking in bookings %}
+
+<tr>
+
+<td>{{ booking.id }}</td>
+
+<td>{{ booking.ride.pickup_location }}</td>
+
+<td>{{ booking.ride.drop_location }}</td>
+
+<td>{{ booking.customer.username }}</td>
+
+<td>৳{{ booking.offer.amount }}</td>
+
+<td>{{ booking.status }}</td>
+
+<td>
+
+<a
+href="/bookings/{{ booking.id }}/"
+class="btn btn-primary btn-sm">
+
+View
+
+</a>
+
+</td>
+
+</tr>
+
+{% empty %}
+
+<tr>
+
+<td colspan="7">
+
+No trips found.
+
+</td>
+
+</tr>
+
+{% endfor %}
+
+</tbody>
+
+</table>
+
+{% endblock %}

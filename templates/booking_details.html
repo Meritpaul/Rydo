@@ -80,6 +80,30 @@ Start Ride
 
 {% endif %}
 
+{% if booking.status == "started" %}
+
+<a
+href="/bookings/{{ booking.id }}/complete/"
+class="btn btn-danger">
+
+Complete Ride
+
+</a>
+
+{% endif %}
+
+{% if booking.status == "accepted" %}
+
+<a
+href="/bookings/{{ booking.id }}/cancel/"
+class="btn btn-secondary">
+
+Cancel Ride
+
+</a>
+
+{% endif %}
+
 </div>
 
 </div>
